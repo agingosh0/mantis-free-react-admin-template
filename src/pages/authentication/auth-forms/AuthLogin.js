@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate,useLocation } from '../../../../node_modules/react-router-dom/dist/index';
 
 // material-ui
 import {
@@ -32,6 +33,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [checked, setChecked] = React.useState(false);
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -42,6 +45,10 @@ const AuthLogin = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const handleLogin = () => {
+        navigate('/dashboard/default');
+      };
 
     return (
         <>
@@ -159,6 +166,7 @@ const AuthLogin = () => {
                                         type="submit"
                                         variant="contained"
                                         color="primary"
+                                        onClick={handleLogin}
                                     >
                                         Login
                                     </Button>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate , useLocation } from '../../../../node_modules/react-router-dom/dist/index';
 
 // material-ui
 import {
@@ -33,6 +34,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
@@ -51,6 +54,10 @@ const AuthRegister = () => {
     useEffect(() => {
         changePassword('');
     }, []);
+
+    const handleLogin = () => {
+        navigate('/dashboard/default');
+      };
 
     return (
         <>
@@ -247,6 +254,7 @@ const AuthRegister = () => {
                                         type="submit"
                                         variant="contained"
                                         color="primary"
+                                        onClick={handleLogin}
                                     >
                                         Create Account
                                     </Button>
